@@ -1,0 +1,64 @@
+public class Invoice
+{
+    public int InvoiceID { get; set; }
+    public string CustomerName { get; set; }
+	public List<InvoiceItem> Items { get; set; } = new List<InvoiceItem>();
+    
+ 
+    public Invoice(int invoiceID, string customerName)
+    {
+        InvoiceID = invoiceID;
+        CustomerName = customerName;
+	}
+ 
+    public void AddInvoice(string description, decimal unitPrice)
+    {
+        var item = new InvoiceItem(description, unitPrice);
+        Items.Add(item);
+    }
+	
+	 public void DeleteInvoice(string description)
+    {
+        //DELETE CODE
+    }
+	 public void GenerateReport()
+    {
+        foreach (var item in Items)
+        {
+            Console.WriteLine(item.Description);
+        }
+    }
+	 public void EmailReport()
+    {
+        //EMAIil code
+    }
+ 
+}
+public class InvoiceItem
+{
+    public string Description { get; set; }
+    public decimal UnitPrice { get; set; }
+
+
+    public InvoiceItem(string description, decimal unitPrice)
+    {
+        Description = description;
+        UnitPrice = unitPrice;
+        
+    }
+}
+
+public class Program
+{
+    public static void Main()
+    {
+      
+        var invoice = new Invoice(1001, "John");
+
+        invoice.AddInvoice("ABC", 1000 );
+		invoice.DeleteInvoice("ABC")
+     
+		invoice.GenerateReport();
+        invoice.EmailReport();
+    }
+}
